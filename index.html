@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ehan JR — Web3 Researcher &amp; Earning Guide</title>
+<meta name="description" content="Ehan JR — Web3 &amp; crypto researcher. Guiding people through vetted free and paid earning opportunities in the on-chain economy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0d14;
+    --bg-soft: #0d1119;
+    --surface: #121722;
+    --surface-2: #171d2a;
+    --border: #232b3a;
+    --text: #eaeef4;
+    --text-muted: #8b93a7;
+    --text-dim: #5b6478;
+    --teal: #2dd4bf;
+    --teal-dim: rgba(45,212,191,0.14);
+    --gold: #e3b341;
+    --gold-dim: rgba(227,179,65,0.14);
+    --danger: #ef6a6a;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --font-display: 'Sora', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(45,212,191,0.08), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(227,179,65,0.06), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  section{ position:relative; z-index:1; }
+
+  ::selection{ background:var(--teal); color:#06110f; }
+
+  :focus-visible{
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+  }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background: rgba(10,13,20,0.72);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1120px; margin:0 auto;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:1.05rem; letter-spacing:0.01em; }
+  .signal-dot{ position:relative; width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 3px var(--teal-dim); }
+  .signal-dot::after{
+    content:""; position:absolute; inset:-6px; border-radius:50%;
+    border:1px solid var(--teal); opacity:0.6;
+    animation: ping 2.2s cubic-bezier(.4,0,.6,1) infinite;
+  }
+  @keyframes ping{ 0%{transform:scale(0.6); opacity:0.8;} 80%,100%{transform:scale(1.8); opacity:0;} }
+
+  .navlinks{ display:flex; gap:32px; font-size:0.92rem; color:var(--text-muted); }
+  .navlinks a:hover{ color:var(--teal); }
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--teal); color:#062421; font-weight:600; font-size:0.86rem;
+    padding:9px 16px; border-radius:999px;
+  }
+  .nav-cta:hover{ background:#3fe3cd; }
+  .menu-toggle{ display:none; background:none; border:1px solid var(--border); color:var(--text); border-radius:8px; padding:8px 10px; }
+
+  @media (max-width: 760px){
+    .navlinks{ display:none; }
+    .nav-cta{ display:none; }
+    .menu-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 168px 0 80px;
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:48px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:0.76rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--teal); background:var(--teal-dim); border:1px solid rgba(45,212,191,0.3);
+    padding:6px 12px; border-radius:999px; margin-bottom:22px;
+  }
+  h1{
+    font-family:var(--font-display); font-weight:800; font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.08; letter-spacing:-0.02em; margin-bottom:20px;
+  }
+  h1 span{ color:var(--teal); }
+  .hero p.lede{
+    color:var(--text-muted); font-size:1.08rem; max-width:520px; margin-bottom:32px;
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-primary{
+    background:var(--teal); color:#062421; font-weight:600; padding:13px 24px; border-radius:10px; font-size:0.95rem;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover{ background:#3fe3cd; }
+  .btn-ghost{
+    border:1px solid var(--border); color:var(--text); padding:13px 24px; border-radius:10px; font-size:0.95rem;
+  }
+  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+
+  .hero-graphic{ position:relative; height:380px; }
+  .hero-graphic svg{ width:100%; height:100%; }
+
+  .node{ animation: pulse 3.4s ease-in-out infinite; transform-origin:center; }
+  .node.n2{ animation-delay:0.6s; }
+  .node.n3{ animation-delay:1.2s; }
+  .node.n4{ animation-delay:1.8s; }
+  .node.n5{ animation-delay:0.3s; }
+  @keyframes pulse{ 0%,100%{ opacity:0.55; r:4;} 50%{ opacity:1; r:6;} }
+
+  .edge{ stroke-dasharray:4 6; animation:flow 6s linear infinite; }
+  @keyframes flow{ to{ stroke-dashoffset:-100; } }
+
+  /* ---------- TICKER ---------- */
+  .ticker-bar{
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    background: var(--bg-soft);
+    overflow:hidden; white-space:nowrap;
+    padding:13px 0;
+  }
+  .ticker-track{
+    display:inline-flex; gap:0; animation: scroll-left 34s linear infinite;
+  }
+  .ticker-track:hover{ animation-play-state:paused; }
+  .ticker-item{
+    font-family:var(--font-mono); font-size:0.82rem; padding:0 26px; color:var(--text-muted);
+    display:inline-flex; align-items:center; gap:8px; border-right:1px solid var(--border);
+  }
+  .tag-free{ color:var(--teal); font-weight:600; }
+  .tag-paid{ color:var(--gold); font-weight:600; }
+  @keyframes scroll-left{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{ padding:96px 0; }
+  .section-head{ margin-bottom:52px; max-width:640px; }
+  .kicker{
+    font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--text-dim); margin-bottom:12px; display:block;
+  }
+  h2{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(1.7rem, 3vw, 2.3rem); letter-spacing:-0.01em;
+  }
+  .section-head p{ color:var(--text-muted); margin-top:14px; font-size:1.02rem; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:56px; align-items:start; }
+  .about-grid p{ color:var(--text-muted); margin-bottom:16px; font-size:1.02rem; }
+  .focus-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+  .focus-tags li{
+    font-family:var(--font-mono); font-size:0.8rem; color:var(--text);
+    border:1px solid var(--border); background:var(--surface); padding:8px 14px; border-radius:8px;
+  }
+  .stat-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:8px; }
+  .stat{ border:1px solid var(--border); background:var(--surface); border-radius:var(--radius-sm); padding:18px; }
+  .stat .num{ font-family:var(--font-mono); font-size:1.5rem; font-weight:600; color:var(--teal); display:block; }
+  .stat .label{ font-size:0.82rem; color:var(--text-muted); margin-top:4px; display:block; }
+
+  /* ---------- OPPORTUNITIES ---------- */
+  .track-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .track-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px;
+    transition: transform .25s ease, border-color .25s ease;
+  }
+  .track-card:hover{ transform: translateY(-4px); border-color: var(--track-accent, var(--teal)); }
+  .track-card.free{ --track-accent: var(--teal); }
+  .track-card.paid{ --track-accent: var(--gold); }
+  .track-badge{
+    display:inline-block; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;
+    padding:5px 11px; border-radius:999px; margin-bottom:18px;
+  }
+  .track-card.free .track-badge{ background:var(--teal-dim); color:var(--teal); }
+  .track-card.paid .track-badge{ background:var(--gold-dim); color:var(--gold); }
+  .track-card h3{ font-family:var(--font-display); font-size:1.3rem; margin-bottom:10px; }
+  .track-card > p{ color:var(--text-muted); font-size:0.95rem; margin-bottom:22px; }
+  .track-list{ display:flex; flex-direction:column; gap:12px; }
+  .track-list li{
+    display:flex; gap:10px; align-items:flex-start; font-size:0.92rem; color:var(--text);
+  }
+  .track-list li svg{ flex-shrink:0; margin-top:3px; }
+
+  /* ---------- PROCESS ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .step{ border-top:2px solid var(--border); padding-top:18px; position:relative; }
+  .step .idx{ font-family:var(--font-mono); color:var(--teal); font-size:0.85rem; }
+  .step h4{ font-family:var(--font-display); font-size:1.05rem; margin:10px 0 8px; }
+  .step p{ color:var(--text-muted); font-size:0.9rem; }
+
+  /* ---------- SIGNALS / INSIGHTS ---------- */
+  .signals-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .signal-card{
+    border:1px dashed var(--border); border-radius:var(--radius); padding:26px; min-height:150px;
+    display:flex; flex-direction:column; justify-content:space-between; color:var(--text-dim);
+  }
+  .signal-card .tag{ font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); }
+  .signal-card .soon{ font-family:var(--font-display); font-weight:600; color:var(--text-muted); margin-top:14px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:56px; text-align:center;
+  }
+  .contact h2{ margin-bottom:14px; }
+  .contact p{ color:var(--text-muted); max-width:480px; margin:0 auto 28px; }
+  .social-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .social-row a{
+    border:1px solid var(--border); padding:11px 20px; border-radius:999px; font-size:0.88rem;
+  }
+  .social-row a:hover{ border-color:var(--teal); color:var(--teal); }
+
+  footer{
+    border-top:1px solid var(--border); padding:36px 0; margin-top:40px;
+  }
+  .foot-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .foot-row .fine{ color:var(--text-dim); font-size:0.8rem; max-width:560px; }
+  .foot-row .brand{ font-size:0.9rem; }
+
+  @media (max-width: 860px){
+    .hero{ grid-template-columns:1fr; padding-top:140px; }
+    .hero-graphic{ height:220px; order:-1; }
+    .about-grid{ grid-template-columns:1fr; }
+    .track-grid{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr 1fr; }
+    .signals-grid{ grid-template-columns:1fr; }
+    .contact{ padding:36px 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand"><span class="signal-dot"></span> Ehan JR</a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#opportunities">Opportunities</a></li>
+      <li><a href="#process">How I Guide</a></li>
+      <li><a href="#signals">Signals</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+    <button class="menu-toggle" aria-label="Menu">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div>
+      <span class="eyebrow"><span class="signal-dot" style="width:6px;height:6px;"></span> Web3 Research &amp; Earning Guidance</span>
+      <h1>Reading the on-chain<br>economy, <span>so you don't<br>have to guess.</span></h1>
+      <p class="lede">I'm Ehan JR — a Web3 &amp; crypto researcher. I track, vet, and break down earning opportunities across the ecosystem, from zero-cost entry points to paid, higher-effort tracks, and guide people through them step by step.</p>
+      <div class="hero-actions">
+        <a href="#opportunities" class="btn-primary">Explore opportunities →</a>
+        <a href="#about" class="btn-ghost">About my research</a>
+      </div>
+    </div>
+    <div class="hero-graphic" aria-hidden="true">
+      <svg viewBox="0 0 400 380" fill="none">
+        <line class="edge" x1="80" y1="90" x2="200" y2="180" stroke="#2dd4bf" stroke-opacity="0.35" stroke-width="1.4"/>
+        <line class="edge" x1="200" y1="180" x2="330" y2="110" stroke="#e3b341" stroke-opacity="0.3" stroke-width="1.4"/>
+        <line class="edge" x1="200" y1="180" x2="150" y2="300" stroke="#2dd4bf" stroke-opacity="0.3" stroke-width="1.4"/>
+        <line class="edge" x1="200" y1="180" x2="300" y2="290" stroke="#2dd4bf" stroke-opacity="0.25" stroke-width="1.4"/>
+        <line class="edge" x1="80" y1="90" x2="60" y2="230" stroke="#e3b341" stroke-opacity="0.2" stroke-width="1.4"/>
+        <circle class="node n1" cx="80" cy="90" r="5" fill="#2dd4bf"/>
+        <circle class="node n2" cx="200" cy="180" r="7" fill="#2dd4bf"/>
+        <circle class="node n3" cx="330" cy="110" r="5" fill="#e3b341"/>
+        <circle class="node n4" cx="150" cy="300" r="5" fill="#2dd4bf"/>
+        <circle class="node n5" cx="300" cy="290" r="4.5" fill="#e3b341"/>
+        <circle class="node n2" cx="60" cy="230" r="4" fill="#e3b341"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-bar" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="tag-free">FREE</span> Testnet participation — reward: allocation-based</span>
+      <span class="ticker-item"><span class="tag-free">FREE</span> Community &amp; content quests — reward: points/allocation</span>
+      <span class="ticker-item"><span class="tag-paid">PAID</span> Node &amp; validator support roles</span>
+      <span class="ticker-item"><span class="tag-free">FREE</span> Research &amp; feedback bounties</span>
+      <span class="ticker-item"><span class="tag-paid">PAID</span> Guided strategy &amp; portfolio review</span>
+      <span class="ticker-item"><span class="tag-free">FREE</span> Testnet participation — reward: allocation-based</span>
+      <span class="ticker-item"><span class="tag-free">FREE</span> Community &amp; content quests — reward: points/allocation</span>
+      <span class="ticker-item"><span class="tag-paid">PAID</span> Node &amp; validator support roles</span>
+      <span class="ticker-item"><span class="tag-free">FREE</span> Research &amp; feedback bounties</span>
+      <span class="ticker-item"><span class="tag-paid">PAID</span> Guided strategy &amp; portfolio review</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section wrap" id="about">
+    <div class="about-grid">
+      <div>
+        <span class="kicker">// About</span>
+        <h2>Research first. Hype never.</h2>
+      </div>
+      <div>
+        <p>I spend my time inside Web3: reading whitepapers, testing new protocols, and tracking which projects are actually worth a user's time or capital. My work sits at the intersection of research and practical guidance — turning a noisy, fast-moving space into a short, clear list of things worth doing.</p>
+        <p>I guide people through both ends of the spectrum: free entry points that only cost time and attention, and paid opportunities that need capital or deeper commitment. Every recommendation is filtered through the same lens — is this legitimate, and is it worth it right now.</p>
+        <ul class="focus-tags">
+          <li>Web3 Research</li>
+          <li>Airdrop &amp; Testnet Tracking</li>
+          <li>DeFi Fundamentals</li>
+          <li>On-chain Opportunity Vetting</li>
+          <li>1:1 Guidance</li>
+        </ul>
+        <div class="stat-row">
+          <div class="stat"><span class="num">Free + Paid</span><span class="label">tracks covered</span></div>
+          <div class="stat"><span class="num">Research-led</span><span class="label">every recommendation vetted</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPPORTUNITIES -->
+  <section class="section wrap" id="opportunities">
+    <div class="section-head">
+      <span class="kicker">// Opportunities</span>
+      <h2>Two tracks. One filter: is it worth your time.</h2>
+      <p>Not everyone wants to put in capital, and not everyone has time to farm testnets by hand. I guide both paths — pick what fits, or run both in parallel.</p>
+    </div>
+    <div class="track-grid">
+      <div class="track-card free">
+        <span class="track-badge">Free track</span>
+        <h3>Time &amp; effort, zero capital</h3>
+        <p>For people starting out or building a foundation without spending anything.</p>
+        <ul class="track-list">
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="#2dd4bf" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Testnet &amp; early-protocol participation</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="#2dd4bf" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Community quests and content contribution</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="#2dd4bf" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Feedback &amp; bug-bounty style research tasks</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="#2dd4bf" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Step-by-step setup guidance included</li>
+        </ul>
+      </div>
+      <div class="track-card paid">
+        <span class="track-badge">Paid track</span>
+        <h3>Capital or deeper commitment</h3>
+        <p>For people ready to allocate capital or time toward higher-effort roles.</p>
+        <ul class="track-list">
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="#e3b341" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Node running &amp; validator support</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="#e3b341" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Guided research on higher-conviction plays</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="#e3b341" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> 1:1 strategy and portfolio walkthroughs</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" stroke="#e3b341" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Ongoing check-ins as opportunities evolve</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section wrap" id="process">
+    <div class="section-head">
+      <span class="kicker">// How I guide</span>
+      <h2>A short, repeatable process</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="idx">01</span>
+        <h4>Scan</h4>
+        <p>I track new protocols, quests, and roles across the ecosystem daily.</p>
+      </div>
+      <div class="step">
+        <span class="idx">02</span>
+        <h4>Vet</h4>
+        <p>Every opportunity is checked for legitimacy, effort required, and realistic upside.</p>
+      </div>
+      <div class="step">
+        <span class="idx">03</span>
+        <h4>Explain</h4>
+        <p>I break it down in plain terms — what it is, what it costs, what it takes.</p>
+      </div>
+      <div class="step">
+        <span class="idx">04</span>
+        <h4>Guide</h4>
+        <p>I walk you through setup and next steps, and stay reachable as things change.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNALS -->
+  <section class="section wrap" id="signals">
+    <div class="section-head">
+      <span class="kicker">// Signals</span>
+      <h2>Latest research notes</h2>
+      <p>Short write-ups and updates land here as I publish them.</p>
+    </div>
+    <div class="signals-grid">
+      <div class="signal-card"><span class="tag">Note</span><span class="soon">More coming soon</span></div>
+      <div class="signal-card"><span class="tag">Note</span><span class="soon">More coming soon</span></div>
+      <div class="signal-card"><span class="tag">Note</span><span class="soon">More coming soon</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section wrap" id="contact">
+    <div class="contact">
+      <span class="kicker">// Get in touch</span>
+      <h2>Want guidance on where to start?</h2>
+      <p>Reach out and I'll help you figure out whether the free track, the paid track, or a mix of both fits what you're looking for.</p>
+      <div class="social-row">
+        <a href="#">Telegram</a>
+        <a href="#">Twitter / X</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span class="brand">Ehan JR</span>
+    <span class="fine">Research and guidance shared here is for informational purposes only and is not financial advice. Always do your own research before committing time or capital.</span>
+  </div>
+</footer>
+
+</body>
+</html>
